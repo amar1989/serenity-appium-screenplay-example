@@ -1,5 +1,6 @@
 package com.offline.city.map.serenity.cucumber.tests;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 public class DemoTestClass {
@@ -7,6 +8,6 @@ public class DemoTestClass {
     @Test
     public void demoTest()
     {
-        System.out.println("Hello World");
+        Assert.assertTrue(true);
     }
 }
