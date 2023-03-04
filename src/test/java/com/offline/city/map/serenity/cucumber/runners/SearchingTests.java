@@ -11,12 +11,9 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features   = "src/test/resources/features/search_locations",
         glue       = "com.offline.city.map.serenity.cucumber.steps",
-        //snippets   = SnippetType.CAMELCASE,
         plugin     = {"pretty"},
         strict     = true,
         monochrome = true
-        //junit      = "--step-notifications"
-        //,dryRun = true
 
 )
 public class SearchingTests {

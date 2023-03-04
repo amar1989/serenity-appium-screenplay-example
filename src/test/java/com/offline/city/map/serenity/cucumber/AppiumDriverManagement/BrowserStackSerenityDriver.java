@@ -18,7 +18,7 @@ import io.appium.java_client.AppiumDriver;
 /**
  * This class is responsible for starting the Appium Server, either on Browserstack remote devices by default
  * or, on your local Appium Server running on IP 127.0.0.1, in case you pass the parameter -Denvironment=local on runtime
- *
+ * <p>
  * This class was initially downloaded from https://github.com/browserstack/serenity-browserstack/tree/master/src/test/java/com/browserstack
  * It has just been adapted, to make our mechanism of the Actors-Apps association, to work
  */
@@ -34,6 +34,7 @@ public class BrowserStackSerenityDriver implements DriverSource {
     }
 
     public AppiumDriver newDriver() {
+        //if we have to get the serenity env varriable then we have to use this code
         EnvironmentVariables environmentVariables = SystemEnvironmentVariables.createEnvironmentVariables();
 
         String username = System.getenv("BROWSERSTACK_USERNAME");
@@ -86,7 +87,7 @@ public class BrowserStackSerenityDriver implements DriverSource {
 
             //if we send on runtime, the variable -Denvironment=local then the tests will start against your local Appium Server
             //make sure your local Appium Server is running on IP and port 127.0.0.1:4723
-            if(environment!=null && environment.equalsIgnoreCase("local")){
+            if (environment != null && environment.equalsIgnoreCase("local")) {
 
                 SetCapabilities.localCapabilities(capabilities);
 
@@ -94,7 +95,8 @@ public class BrowserStackSerenityDriver implements DriverSource {
                 localURL = new URL("http://127.0.0.1:4723/wd/hub");
 
                 //associate URL with AppiumDriver class
-                appiumDriverToReturn = new AppiumDriver(localURL, capabilities){};
+                appiumDriverToReturn = new AppiumDriver(localURL, capabilities) {
+                };
 
                 //Set the device's location for the corresponding Actor:
                 SetTheLocation.ofTheDevice(appiumDriverToReturn);
@@ -118,7 +120,8 @@ public class BrowserStackSerenityDriver implements DriverSource {
                         + environmentVariables.getProperty("browserstack.server") + "/wd/hub");
 
                 //associate URL with AppiumDriver class
-                appiumDriverToReturn = new AppiumDriver(browserStackURL, capabilities){};
+                appiumDriverToReturn = new AppiumDriver(browserStackURL, capabilities) {
+                };
 
                 //Set the device's location for the corresponding Actor:
                 SetTheLocation.ofTheDevice(appiumDriverToReturn);

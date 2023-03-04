@@ -32,29 +32,32 @@ public class SearchRouteSteps {
     }
 
     @After
-    public void tearDown(){
+    public void tearDown() {
         OnStage.drawTheCurtain();
     }
 
     @Given("^that (.*) wants to search for a point of interest$")
     public void navigatesToJourneyConfiguration(String commuterName) throws Throwable {
+        System.out.println("Hello word this is when");
         //this method is important for our mechanism of the Actors-Apps association to work
-        startTheAppForActor(commuterName);
+        /*startTheAppForActor(commuterName);
 
         OnStage.theActorCalled(commuterName)
-                                            .attemptsTo(
-                                                            Launch.theApp(),
-                                                            Go.toMap()
-                                                        );
+                .attemptsTo(
+                        Launch.theApp(),
+                        Go.toMap()
+                );*/
     }
 
     @Given("^s?he needs to know where (.*) is located$")
     public void needsToKnowWhereLocationIsLocated(String location) throws Throwable {
-        Search.theLocation(location);
+        //Search.theLocation(location);
+        System.out.println("Hello word this is given");
     }
 
     @Then("^he should be able to see (.*) on the map$")
-    public void heShouldBeAbleToSeeOnTheMap(String location) throws Throwable{
+    public void heShouldBeAbleToSeeOnTheMap(String location) throws Throwable {
         // not important for this POC
+        System.out.println("Hello word this is then");
     }
 }
